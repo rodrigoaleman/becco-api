@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_type_property_types",
+  "info": {
+    "displayName": "Property_Type",
+    "icon": "shoppingCart"
+  },
+  "options": {},
+  "attributes": {
+    "Price": {
+      "type": "decimal",
+      "required": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "For Sale",
+        "For Rent"
+      ]
+    }
+  }
+}

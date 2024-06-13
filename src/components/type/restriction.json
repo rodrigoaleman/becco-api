@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_type_restrictions",
+  "info": {
+    "displayName": "Restriction",
+    "icon": "thumbDown"
+  },
+  "options": {},
+  "attributes": {
+    "restriction": {
+      "type": "string"
+    }
+  }
+}

@@ -25,6 +25,12 @@
       "type": "string",
       "required": true,
       "unique": false
+    },
+    "listings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::listing.listing",
+      "mappedBy": "features"
     }
   }
 }

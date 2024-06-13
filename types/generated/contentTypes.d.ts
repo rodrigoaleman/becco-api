@@ -385,6 +385,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    listing: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'api::listing.listing'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -433,6 +438,11 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    listings: Attribute.Relation<
+      'api::feature.feature',
+      'manyToMany',
+      'api::listing.listing'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -463,6 +473,7 @@ export interface ApiListingListing extends Schema.CollectionType {
     singularName: 'listing';
     pluralName: 'listings';
     displayName: 'Listing';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -475,10 +486,9 @@ export interface ApiListingListing extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     main_photo: Attribute.Media &
@@ -511,11 +521,39 @@ export interface ApiListingListing extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     description: Attribute.Text &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Type: Attribute.Component<'type.property-type', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::listing.listing',
+      'oneToOne',
+      'api::category.category'
+    >;
+    features: Attribute.Relation<
+      'api::listing.listing',
+      'manyToMany',
+      'api::feature.feature'
+    >;
+    Restriction: Attribute.Component<'type.restriction', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    details: Attribute.Component<'type.detail', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

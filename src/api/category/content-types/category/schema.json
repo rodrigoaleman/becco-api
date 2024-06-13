@@ -23,6 +23,12 @@
       },
       "type": "string",
       "required": true
+    },
+    "listing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::listing.listing",
+      "mappedBy": "category"
     }
   }
 }
