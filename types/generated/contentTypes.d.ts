@@ -467,6 +467,36 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'HomePage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Carousel: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiListingListing extends Schema.CollectionType {
   collectionName: 'listings';
   info: {
@@ -1021,6 +1051,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::category.category': ApiCategoryCategory;
       'api::feature.feature': ApiFeatureFeature;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'api::listing.listing': ApiListingListing;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
