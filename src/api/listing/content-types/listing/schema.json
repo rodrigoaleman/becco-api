@@ -103,11 +103,11 @@
       },
       "component": "type.property-type"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "listing"
+      "inversedBy": "listings"
     },
     "features": {
       "type": "relation",

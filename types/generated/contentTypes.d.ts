@@ -385,9 +385,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    listing: Attribute.Relation<
+    listings: Attribute.Relation<
       'api::category.category',
-      'oneToOne',
+      'manyToMany',
       'api::listing.listing'
     >;
     createdAt: Attribute.DateTime;
@@ -567,9 +567,9 @@ export interface ApiListingListing extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::listing.listing',
-      'oneToOne',
+      'manyToMany',
       'api::category.category'
     >;
     features: Attribute.Relation<
