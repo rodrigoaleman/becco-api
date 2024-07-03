@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface HomeServices extends Schema.Component {
+  collectionName: 'components_home_services';
+  info: {
+    displayName: 'services';
+    icon: 'chartBubble';
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.String;
+    icon: Attribute.String;
+  };
+}
+
 export interface TypeDetail extends Schema.Component {
   collectionName: 'components_type_details';
   info: {
@@ -37,6 +50,7 @@ export interface TypeRestriction extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'home.services': HomeServices;
       'type.detail': TypeDetail;
       'type.property-type': TypePropertyType;
       'type.restriction': TypeRestriction;
